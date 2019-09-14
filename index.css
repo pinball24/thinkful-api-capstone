@@ -1,9 +1,10 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    font-family: 'Gentium Basic', serif;
 }
 
-#nav-container {
+/* #nav-container {
     height: 40px;
     width: 100%;
     display: flex;
@@ -22,20 +23,162 @@
     color: black;
     text-decoration: none;
     height: 100%;
+} */
+
+h1,
+h2,
+h3 {
+    font-family: 'Open Sans', sans-serif;
 }
 
 #search-container {
-    height: 100%;
-    width: 100%;
-    display: block;
     margin-top: 50px;
     margin-left: 20px;
-}
-
-.item  .tags{
     display: block;
 }
 
-#search-button {
-    margin-left: 30%;
+label span {
+    display: inline-block;
+    margin-bottom: 5px;
 }
+
+label input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+label input[type="checkbox"] {
+    display: none;
+}
+
+label:nth-child(1) span,
+label:nth-child(2) span {
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: inline-block;
+    box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.1);
+}
+
+label input[type="checkbox"]:checked + span {
+    color: white;
+    box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.1);
+    background: green;
+}
+
+button,
+.thumbnail,
+label,
+#close {
+    cursor: pointer;
+}
+
+main {
+    text-align: center;
+    width: 100%;
+}
+
+#main-screen h2 {
+    padding: 20px;
+}
+
+.thumbnail,
+.TvThumbnail {
+    overflow: auto;
+    text-align:center;
+    border-radius: 10px;
+    width: 150px;
+    height: 200px;
+    margin: 5px;
+}
+
+.thumbnail:hover,
+.thumbnail:focus,
+.TvThumbnail:hover,
+.TvThumbnail:focus {
+    border: 2px solid green;
+}
+
+.pop-up {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#reviews {
+    border-radius: 15px;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 10px;
+    border: 1px solid green;
+    width: 80%;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#reviews h2,
+#reviews h3 {
+    padding: 5px;
+}
+
+#close {
+    color: red;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 780px) {
+    #search-container {
+        display: flex;
+        justify-content: center;
+        
+    }
+    
+    label {
+        padding-right: 5px;
+    }
+
+    button {
+        margin-bottom: 10px;
+    }
+
+    .thumbnail,
+    .TvThumbnail {
+        width: 200px;
+        height: 300px;
+    }
+    #nyt {
+        float: left;
+        width: 50%;
+        padding: 10px 30px;
+    }
+
+    .pop-up:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    #tmdb {
+        
+    }
+
+    #reviews {
+        padding: 20px;
+    }
+
+    #reviews h1 {
+        padding-bottom: 25px;
+        text-align: center;
+    }
+}
+
+
+

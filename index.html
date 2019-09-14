@@ -4,21 +4,69 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Capstone Project</title>
+        <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="index.css">
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="index.js"></script>
     </head>
     <body>
-        <nav id="nav-container" role="navigation">
+<!--         <nav id="nav-container" role="navigation">
             <div id="nav-items">
                 <a class="nav-item" href="">Trailers</a>
                 <a class="nav-item" href="">Theaters</a>
                 <a class="nav-item" href="">Movie & TV details</a>
-            </div>
+            </div> -->
         </nav>
-        <section id="search-container">
-            <a class="item">Search movie or TV show</a>
-            <input type="text" name="player" class="tags" placeholder="Movie or TV show">
+        <form id="search-container">
+            <label>
+                <input type="checkbox" name="video-type" value="tv" /><span>TV</span>
+            </label>
+            <label>
+                <input type="checkbox" name="video-type" value="movie" checked /><span>Movie</span>
+            </label>
+            <label>
+                <input type="text" name="video-title" placeholder="Title name" required />
+            </label>
+            <button type="submit">Search</button>
+        </form>
+        <section class="pop-up">
+            <section id="reviews">
+                <span id="close">&times;</span>
+                <h1>Reviews</h1>
+                <article id="nyt">
+                    <h2>The New York Times</h2>
+                </article>
+                <article id="tmdb">
+                    <h2>TMDB</h2>
+                </article>
+            </section>
+<!--             <div class="window">
+                <div class="col-6">
+                    <section class="card">
+                        <header>
+                            <h2 id="ny-times">The NY Times</h2>
+                        </header>
+                        <main class="review">
+                            <div class="search-results-nyt"></div>
+                        </main>
+                    </section>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <section class="card">
+                    <header>
+                        <h2 id="tmdb">TMDB</h2>
+                    </header>
+                    <main class="review">
+                        <span id="close">&times;</span>
+                        <div class="search-results-tmdb"></div>
+                    </main>
+                </section>
+            </div> -->
         </section>
+        <main id="main-screen">
+            <h2></h2>
+        </main>
     </body>
 </html>
