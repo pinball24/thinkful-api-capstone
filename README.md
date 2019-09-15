@@ -1,0 +1,17 @@
+Thinkful API capstone project
+
+https://pinball24.github.io/thinkful-api-capstone/
+
+SUMMARY:  Allows users to search movies and it will show you the new york times review and tmdb overview with ratings. Also can pull info on tv shows.
+
+SCREENSHOTS:
+
+Home page 
+
+<img src="images/Screenshot_2019-09-15%20Capstone%20Project(1).jpg" width="300">
+
+Reviews page
+
+<img src="images/Screenshot_2019-09-15%20Capstone%20Project.png" width="300">
+
+TECHNOLOGY USED: HTML/CSS/JavaScript/jQuery
