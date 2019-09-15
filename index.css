@@ -4,6 +4,32 @@
     font-family: 'Gentium Basic', serif;
 }
 
+#nav-container {
+    height: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: lightgreen;
+}
+
+#nav-items {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav-item {
+    color: black;
+    list-style: none;
+    height: 100%;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+    font-weight: bolder;
+}
+
 h1,
 h2,
 h3 {
@@ -48,7 +74,8 @@ label input[type="radio"]:checked + span {
 button,
 .thumbnail,
 label,
-#close {
+#close,
+.nav-item {
     cursor: pointer;
 }
 
@@ -165,6 +192,3 @@ span img {
         text-align: center;
     }
 }
-
-
-

@@ -94,6 +94,8 @@ function getTvShow(tvName) {
             $('#js-error-message').text(`somthing went wrong: ${err.message}`);
         });
 }
+
+
 // clearing the previous results from the page after a new search
 function clearResults() {
     $('main h2').siblings().remove()
@@ -111,6 +113,7 @@ function renderMainScreen() {
         })
         .then(responseJson => {
             console.log(responseJson)
+            clearResults()
             renderHtml(responseJson)
             $('main h2').text('Now playing')
         })
@@ -118,6 +121,49 @@ function renderMainScreen() {
             $('#js-error-message').text(`Something went wrong: ${err.message}`);
         });
 }
+
+function renderPopularTv() {
+    const url = 'https://api.themoviedb.org/3/tv/popular?api_key=49fbccf8628b93b244b322eff6a1fef6&language=en-US&page=1';
+
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => {
+            console.log(responseJson)
+            clearResults()
+            renderHtml(responseJson)
+            $('main h2').text('Top Movies')
+        })
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        });
+}
+
+function renderTopMovies () {
+    const url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=49fbccf8628b93b244b322eff6a1fef6&language=en-US&page=1';
+
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => {
+            console.log(responseJson)
+            clearResults()
+            renderHtml(responseJson)
+            $('main h2').text('Top Movies')
+        })
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        });
+}
+
 // renders ny times results
 function renderNyTimesResults(responseJson) {
   console.log(responseJson);
@@ -211,6 +257,20 @@ function popUpScreen() {
     }
 }
 
+function watchNav() {
+    $('#nav-items').on('click', '#js-playingNow', function(e) {
+        renderMainScreen()
+    })
+
+    $('#nav-items').on('click', '#js-topMovies', function(e) {
+        renderTopMovies()
+    })
+
+    $('#nav-items').on('click', '#js-tvShow', function(e) {
+        renderPopularTv()
+    })
+}
+
 function renderHtml(responseJson) {
     const poster = 'https://image.tmdb.org/t/p/w500';
         let html='';
@@ -241,6 +301,7 @@ function renderTvHtml(responseJson) {
 
 function handlePage() {
     watchFormButton();
+    watchNav();
     popUpScreen();
     renderMainScreen();
 }
