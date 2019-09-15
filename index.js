@@ -136,7 +136,7 @@ function renderPopularTv() {
             console.log(responseJson)
             clearResults()
             renderHtml(responseJson)
-            $('main h2').text('Top Movies')
+            $('main h2').text('Popular Tv')
         })
         .catch(err => {
             $('#js-error-message').text(`Something went wrong: ${err.message}`);
