@@ -8,6 +8,6 @@ SCREENSHOTS:
 
 Home page 
 
-![](images/landing-page.jpg)
+![](images/Screenshot_2019-09-15%20Capstone%20Project(1).jpg)
 
 
