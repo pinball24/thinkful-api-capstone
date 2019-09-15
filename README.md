@@ -8,6 +8,6 @@ SCREENSHOTS:
 
 Home page 
 
-![](images/filename%20landing-page.jpg)
+![](images/landing-page.jpg)
 
 
