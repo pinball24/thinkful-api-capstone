@@ -112,7 +112,7 @@ function renderMainScreen() {
             throw new Error(response.statusText);
         })
         .then(responseJson => {
-            console.log(responseJson)
+            
             clearResults()
             renderHtml(responseJson)
             $('main h2').text('Now playing')
@@ -133,7 +133,7 @@ function renderPopularTv() {
             throw new Error(response.statusText);
         })
         .then(responseJson => {
-            console.log(responseJson)
+            
             clearResults()
             renderHtml(responseJson)
             $('main h2').text('Popular Tv')
@@ -154,7 +154,7 @@ function renderTopMovies () {
             throw new Error(response.statusText);
         })
         .then(responseJson => {
-            console.log(responseJson)
+            
             clearResults()
             renderHtml(responseJson)
             $('main h2').text('Top Movies')
@@ -175,7 +175,7 @@ function renderUpcomingMovies() {
             throw new Error(response.statusText);
         })
         .then(responseJson => {
-            console.log(responseJson)
+            
             clearResults()
             renderHtml(responseJson)
             $('main h2').text('Upcoming Movies')
@@ -187,7 +187,7 @@ function renderUpcomingMovies() {
 
 // renders ny times results
 function renderNyTimesResults(responseJson) {
-  console.log(responseJson);
+  
     $('#nyt h2').siblings().remove();
     const data = responseJson;
     if (data === undefined) $('#nyt').css('display', 'none');
@@ -213,14 +213,14 @@ function renderDescription(title, description, vote) {
 
 // renders results for movie results to the screen
 function renderMovieResults(responseJson) {
-    console.log(responseJson)
+    
     renderHtml(responseJson)
         $('main h2').text('Movie results')
 
 }
 // renders results for tv shows to the screen
 function renderTvResults(responseJson) {
-    console.log(responseJson)
+    
     renderTvHtml(responseJson)
         $('main h2').text('TV results')
 }
@@ -254,7 +254,7 @@ function popUpScreen() {
     $('#main-screen').on('click', '.TvThumbnail', function(e) {
         e.stopPropagation()
         const titleName = $(this).closest('input[type="image"]').val();
-        console.log('titleName')
+        
         const releaseDate = $(this).closest('input[type="image"]').data('release-date');
         const desciption = $(this).closest('input[type="image"]').data('overview');
         const vote = $(this).closest('input[type="image"]').data('vote');
