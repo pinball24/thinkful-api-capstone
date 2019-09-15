@@ -8,7 +8,7 @@ SCREENSHOTS:
 
 Home page 
 
-<img src="images/Screenshot_2019-09-15%20Capstone%20Project(1).jpg" width="250">
+<img src="images/Screenshot_2019-09-15%20Capstone%20Project(1).jpg" width="300">
 
 
 
