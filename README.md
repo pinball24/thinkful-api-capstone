@@ -10,5 +10,7 @@ Home page
 
 <img src="images/Screenshot_2019-09-15%20Capstone%20Project(1).jpg" width="300">
 
+Reviews page
 
+<img src="images/Screenshot_2019-09-15%20Capstone%20Project.png" width="300">
 
