@@ -8,7 +8,7 @@ const tvUrl = 'https://api.themoviedb.org/3/search/tv';
 const nyTimesApiKey = 'SjDOdukwhvhx1ivKA01PA7xTeVXdw9Jg';
 const nyTimesUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json';
 
-
+// formats the url 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
@@ -164,6 +164,27 @@ function renderTopMovies () {
         });
 }
 
+function renderUpcomingMovies() {
+    const url = 'https://api.themoviedb.org/3/movie/upcoming?api_key=49fbccf8628b93b244b322eff6a1fef6&language=en-US&page=1';
+
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJson => {
+            console.log(responseJson)
+            clearResults()
+            renderHtml(responseJson)
+            $('main h2').text('Upcoming Movies')
+        })
+        .catch(err => {
+            $('#js-error-message').text(`Something went wrong: ${err.message}`);
+        });
+}
+
 // renders ny times results
 function renderNyTimesResults(responseJson) {
   console.log(responseJson);
@@ -264,6 +285,10 @@ function watchNav() {
 
     $('#nav-items').on('click', '#js-topMovies', function(e) {
         renderTopMovies()
+    })
+
+    $('#nav-items').on('click', '#js-upcoming', function(e) {
+        renderUpcomingMovies()
     })
 
     $('#nav-items').on('click', '#js-tvShow', function(e) {

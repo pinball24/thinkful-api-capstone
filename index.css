@@ -5,24 +5,43 @@
 }
 
 #nav-container {
-    height: 40px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
     background-color: lightgreen;
+    text-align: right;
+}
+
+#nav-container ul li {
+    text-align: left;
+}
+
+#hamburger {
+    font-size: 26px;
+    padding: 10px;
+}
+
+#toggle {
+    display: none;
+}
+
+#toggle:checked + #nav-items {
+    display: block;
 }
 
 #nav-items {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+    float: left;
+    display: none;
+    padding: 5px;
+}
+
+#nav-container:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .nav-item {
     color: black;
     list-style: none;
-    height: 100%;
+    padding-top: 10px;
 }
 
 .nav-item:hover,
@@ -146,6 +165,18 @@ span img {
 }
 
 @media only screen and (min-width: 780px) {
+
+
+    #nav-items {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #hamburger {
+        display: none;
+    }
+
     #search-container {
         display: flex;
         justify-content: center;
