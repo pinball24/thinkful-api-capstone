@@ -3,7 +3,7 @@
 const apiKey = '49fbccf8628b93b244b322eff6a1fef6';
 const movieUrl = 'https://api.themoviedb.org/3/search/movie';
 const tvUrl = 'https://api.themoviedb.org/3/search/tv';
-const multiUrl = 'https://api.themoviedb.org/3/search/multi';
+
 // NY times data
 const nyTimesApiKey = 'SjDOdukwhvhx1ivKA01PA7xTeVXdw9Jg';
 const nyTimesUrl = 'https://api.nytimes.com/svc/movies/v2/reviews/search.json';
@@ -39,33 +39,6 @@ function getNyTimes(timesReview, releaseDate) {
         })
 }
 
-// grabbing the data for multi search
-function getMulti(multiName) {
-    const params = {
-        api_key: apiKey,
-        include_adult: false,
-        query: multiName,
-        language: "en-US"
-    }
-
-    const queryString = formatQueryParams(params);
-    const url = multiUrl + '?' + queryString;
-
-    fetch(url)
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error(response.statusText);
-        })
-        .then(responseJson => {
-            clearResults()
-            renderMultiResults(responseJson)
-        })
-        .catch(err => {
-            $('#js-error-message').text(`something went wrong: ${err.message}`);
-        });
-}
 
 // grabbing the data for movies
 function getMovie(movieName) {
@@ -150,12 +123,16 @@ function renderNyTimesResults(responseJson) {
   console.log(responseJson);
     $('#nyt h2').siblings().remove();
     const data = responseJson;
-    if (data === undefined) $('#nyt').empty();
+    if (data === undefined) $('#nyt').css('display', 'none');
+    else {
+        $('#nyt').css('display', 'block');
+
         $('#nyt').append(
         `<h3>${data.display_title}</h3>
         <p>Rating: ${data.mpaa_rating}</p>
         <p>${data.summary_short}</p>
         <a href="${data.link.url}">NY times full review</a>`)
+    }
 }
 
 function renderDescription(title, description, vote) {
@@ -180,12 +157,6 @@ function renderTvResults(responseJson) {
     renderTvHtml(responseJson)
         $('main h2').text('TV results')
 }
-// renders results for multi to the screen
-function renderMultiResults(responseJson) {
-    console.log(responseJson)
-    renderHtml(responseJson)
-        $('main h2').text('Results')
-}
 
 function watchFormButton() {
     $('#search-container').submit(event => {
@@ -195,21 +166,8 @@ function watchFormButton() {
 
         $('input[name="video-title"]').val("");
 
-        if (type === 'movie') {
-            getMovie(title);
-        } else if (type === 'tv') {
-            getTvShow(title)
-        } else {
-            getMulti(title)            
-        }
-    });
-}
-
-
-// for making it possible to only check one box at a time
-function handleCheckbox() {
-    $('input[type="checkbox"]').on('change', function() {
-        $('input[type="checkbox"]').not(this).prop('checked', false);
+        if (type === 'movie') getMovie(title)
+        else getTvShow(title)
     });
 }
 
@@ -282,7 +240,6 @@ function renderTvHtml(responseJson) {
 }
 
 function handlePage() {
-    handleCheckbox();
     watchFormButton();
     popUpScreen();
     renderMainScreen();

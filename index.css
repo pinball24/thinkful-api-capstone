@@ -4,27 +4,6 @@
     font-family: 'Gentium Basic', serif;
 }
 
-/* #nav-container {
-    height: 40px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: lightgreen;
-}
-
-#nav-items {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.nav-item {
-    color: black;
-    text-decoration: none;
-    height: 100%;
-} */
-
 h1,
 h2,
 h3 {
@@ -47,7 +26,7 @@ label input {
     margin-bottom: 5px;
 }
 
-label input[type="checkbox"] {
+label input[type="radio"] {
     display: none;
 }
 
@@ -60,7 +39,7 @@ label:nth-child(2) span {
     box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.1);
 }
 
-label input[type="checkbox"]:checked + span {
+label input[type="radio"]:checked + span {
     color: white;
     box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.1);
     background: green;
@@ -120,6 +99,7 @@ main {
     width: 80%;
     line-height: 1.5;
     text-align: center;
+    overflow: auto;
 }
 
 #reviews h2,
@@ -134,40 +114,46 @@ main {
     font-weight: bold;
 }
 
+span img {
+    width: 100px;
+}
+
 @media only screen and (min-width: 780px) {
     #search-container {
         display: flex;
         justify-content: center;
-        
+        align-items: center;
     }
     
+    label input {
+        flex-grow: 2;
+    }
+
     label {
         padding-right: 5px;
     }
 
     button {
-        margin-bottom: 10px;
+        margin-bottom: 6px;
     }
 
     .thumbnail,
     .TvThumbnail {
-        width: 200px;
-        height: 300px;
+        width: 250px;
+        height: 350px;
     }
     #nyt {
         float: left;
         width: 50%;
         padding: 10px 30px;
+        margin-bottom: 50px;
+        margin-right: 25px;
     }
-
+    
     .pop-up:after {
         content: "";
         display: table;
         clear: both;
-    }
-
-    #tmdb {
-        
     }
 
     #reviews {
