@@ -14,3 +14,4 @@ Reviews page
 
 <img src="images/Screenshot_2019-09-15%20Capstone%20Project.png" width="300">
 
+TECHNOLOGY USED: HTML/CSS/JavaScript/jQuery
