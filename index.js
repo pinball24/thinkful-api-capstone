@@ -135,7 +135,7 @@ function renderPopularTv() {
         .then(responseJson => {
             
             clearResults()
-            renderHtml(responseJson)
+            renderTvHtml(responseJson)
             $('main h2').text('Popular Tv')
         })
         .catch(err => {
@@ -192,13 +192,13 @@ function renderNyTimesResults(responseJson) {
     const data = responseJson;
     if (data === undefined) $('#nyt').css('display', 'none');
     else {
-        $('#nyt').css('display', 'block');
+        
 
         $('#nyt').append(
         `<h3>${data.display_title}</h3>
         <p>Rating: ${data.mpaa_rating}</p>
         <p>${data.summary_short}</p>
-        <a href="${data.link.url}">NY times full review</a>`)
+        <a href="${data.link.url}" target="_blank">NY times full review</a>`)
     }
 }
 
@@ -225,6 +225,23 @@ function renderTvResults(responseJson) {
         $('main h2').text('TV results')
 }
 
+function renderLoading() {
+    $('.loader').css('display', 'block')
+    $('#reviews').css('display', 'none')
+ 
+
+    setTimeout(removeLoader, 2500);
+      
+}
+
+function removeLoader() {
+    
+    $('.loader').css('display', 'none')
+    $('#reviews').css('display', 'block')
+}
+
+
+
 function watchFormButton() {
     $('#search-container').submit(event => {
         event.preventDefault();
@@ -246,6 +263,9 @@ function popUpScreen() {
         const releaseDate = $(this).closest('input[type="image"]').data('release-date');
         const desciption = $(this).closest('input[type="image"]').data('overview');
         const vote = $(this).closest('input[type="image"]').data('vote');
+
+        renderLoading();
+
         getNyTimes(titleName, releaseDate);
         renderDescription(titleName, desciption, vote);
         $('.pop-up').css('display', 'block')
@@ -253,12 +273,14 @@ function popUpScreen() {
 
     $('#main-screen').on('click', '.TvThumbnail', function(e) {
         e.stopPropagation()
-        const titleName = $(this).closest('input[type="image"]').val();
-        
+        const titleName = $(this).closest('input[type="image"]').val();        
         const releaseDate = $(this).closest('input[type="image"]').data('release-date');
         const desciption = $(this).closest('input[type="image"]').data('overview');
         const vote = $(this).closest('input[type="image"]').data('vote');
         $('#nyt').empty();
+
+        renderLoading();
+
         renderDescription(titleName, desciption, vote);
         $('.pop-up').css('display', 'block')
     });
@@ -312,15 +334,19 @@ function renderHtml(responseJson) {
 
 function renderTvHtml(responseJson) {
     const poster = 'https://image.tmdb.org/t/p/w500';
+    const altImage = 'https://image.spreadshirtmedia.com/image-server/v1/compositions/P3471673T1188A70PC5040325PA2539PT10X0Y29S43/views/1,width=300,height=300,appearanceId=70,version=1478258753/sorry-no-image-available-iphone-7-rubber-case.jpg'
     let html = '';
+    
         responseJson.results.forEach((pic) =>
         html += `<input type="image"
             src="${poster}${pic.poster_path}"
-            alt="${pic.original_name}" 
+            alt="${pic.original_name}"
             data-release-date="${pic.release_date}"
             data-overview="${pic.overview}"
             data-vote="${pic.vote_average}"
             aria-pressed="false" value="${pic.original_name}" class="TvThumbnail js-img">`)
+
+
     $('#main-screen').append(html);
 }
 
